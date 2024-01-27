@@ -1,7 +1,14 @@
 import React, { useEffect,useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box} from '@mui/material';
-const Recommendations = ({receivedData}) => {
+import {connect} from 'react-redux';
+
+const mapStateToProps = (state )=> {
+    return {
+        dataPropss :state?.stockReducer 
+    }
+ }
+const Recommendations = ({dataPropss}) => {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },
@@ -40,10 +47,10 @@ const Recommendations = ({receivedData}) => {
 
   return (
     <div>
-        {receivedData!==undefined && receivedData.length > 0 ? 
+        {dataPropss.selectedStock!==undefined && dataPropss.selectedStock.length > 0 ? 
             <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-         rows={receivedData}
+         rows={dataPropss.selectedStock}
         columns={columns}
         initialState={{
           pagination: {
@@ -58,4 +65,4 @@ const Recommendations = ({receivedData}) => {
     </div>
     )
   }
-export default Recommendations ; 
+export default connect(mapStateToProps)(Recommendations);
