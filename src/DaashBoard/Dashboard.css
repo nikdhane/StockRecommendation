@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center; /* Optional: center the content horizontally */
+    align-items: center; /* Optional: center the content vertically */
+  }
+  
+  .side-by-side {
+    display: flex;
+  }
+  
+  /* Adjust the width of the components as needed */
+  .side-by-side > * {
+    margin-right: 10px; /* Optional: Add space between components */
+  }
